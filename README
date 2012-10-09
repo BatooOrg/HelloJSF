@@ -1,0 +1,105 @@
+ This project is a demonstration of how fast Batoo JPA compared to Hibernate on end to end context.
+
+ This project has been created using Knappsack Maven Archetypes. For more information on the archetypes 
+ go to: http://www.andygibson.net/blog/tag/knappsack/
+
+ 
+ PREPERATION
+ ===========
+
+ 1) Install Eclipse IDE for Java EE Developers
+
+ 2) Install M2Eclipse
+
+ 3) Clone the repository
+
+ 4) Download and install JBoss 7.1.1 Final
+
+ 5) Create a JBoss Runtime & Server pointing to your JBoss directory in Eclipse
+
+ 6) Add the project to server's deployments
+
+ 7) Run the server.
+
+ 8) Before running tests let the application initialize the database by navigating to http://localhost:8080/HelloJSF
+
+ 9) Download and install JMeter.
+
+
+
+ INSTALLING Batoo JPA into JBoss 7.1.1
+ =====================================
+ 
+ 1) Create the directory JBOSS_HOME/modules/org/batoo/main
+ 2) Copy the latest version of batoo-jpa.jar into the directory as batoo-jpa-0.1.jar. You can download the latest jar from Maven Repo: http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22batoo-jpa%22
+ 3) Copy the contents of etc/jboss-module into the directory. 
+
+
+ DEPLOYMENT
+ ==========
+ 
+ This application can be deployed to JBoss container through the following methods
+ 
+ 1) IDE Integration - Any Maven aware IDE (such as Netbeans or Eclipse) 
+    should be able to deploy this application using methods provided by 
+    the IDE.
+    
+ 2) Manually - If you run the Maven command :
+ 
+    mvn clean package
+    
+    Maven will clean, build and package the application and you can then manually deploy 
+    the HelloJSF.war file to your server.
+    
+ 3) You can deploy to JBoss if you have the JBOSS_HOME environment variable set up using:
+    
+    mvn clean package jboss:hard-deploy
+    
+    This will clean, build and package the application, and then copy the application to the 
+    JBoss deploy directory for the JBoss installation defined by JBOSS_HOME. 
+    
+    
+
+ RUNNING TESTS WITH HIBERNATE
+ ============================
+
+ 1) Rename /src/main/resources/META-INF/hibernate-persistence.xml to persistence.xml.
+ 2) Deploy the WAR file.
+ 3) Run JMeter with the jmeter.jmx file in the root of the project directory to warm JBoss up.
+ 4) Reset the reports and run JMeter again and take note of "request per seconds".
+ 
+ 
+ 
+ RUNNING TESTS WITH BATOO
+ ========================
+
+ 1) Rename /src/main/resources/META-INF/batoo-persistence.xml to persistence.xml.
+ 2) Deploy the WAR file.
+ 3) Run JMeter with the jmeter.jmx file in the root of the project directory to warm JBoss up.
+ 4) Reset the reports and run JMeter again and take note of "request per seconds".
+ 
+ 
+
+ RESULTS
+ =======
+ 
+ While for JPA stack Batoo JPA is 15+ times faster than Hibernate, this application consists of following layers:
+  
+   * JSF
+   * JPA
+   * Database
+   
+ So it should not be surprizing that switching to Batoo speeds up the test about 2 times. This is because while JPA 
+ layer CPU consumption is brought close to 0 by Batoo JPA, there still is database and JSF layer which continue to 
+ consume as much CPU.
+ 
+ 
+ 
+ CONCLUSION
+ ==========
+ 
+ Using Batoo JPA, you can bring your operational, administrative, license, support costs dramatically.
+ In case you need support to run this test project or use Batoo JPA in your project, contact us for free support.
+
+ Thank you for checking out Batoo JPA.
+  
