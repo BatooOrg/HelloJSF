@@ -27,7 +27,7 @@
         <resource-root path="batoo-jpa-0.1.jar"/>
         <resource-root path="commons-dbutils-1.4.jar"/>
         <resource-root path="antlr-runtime-3.4.jar"/>
-        <resource-root path="asm-4.0.jar"/>
+        <resource-root path="asm-3.3.1.jar"/>
     </resources>
 
     <dependencies>

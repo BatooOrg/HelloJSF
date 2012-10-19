@@ -18,7 +18,7 @@
 		<dependency>
 			<groupId>org.batoo.jpa</groupId>
 			<artifactId>batoo-jpa</artifactId>
-			<version>0.1.4-SNAPSHOT</version>
+			<version>0.1.7-SNAPSHOT</version>
 			<scope>provided</scope>
 			<exclusions>
 				<exclusion>

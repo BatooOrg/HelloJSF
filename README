@@ -3,7 +3,6 @@
  This project has been created using Knappsack Maven Archetypes. For more information on the archetypes 
  go to: http://www.andygibson.net/blog/tag/knappsack/
 
- 
  PREPERATION
  ===========
 
@@ -26,12 +25,21 @@
  9) Download and install JMeter.
 
 
+ BATOO JPA INSTALLATION
+ ======================
+ Install Batoo JPA into your local repo as per instructions here https://github.com/BatooOrg/BatooJPA
+ When Batoo JPA 0.2 is released this step will be skipped.
 
+ 
  INSTALLING Batoo JPA into JBoss 7.1.1
  =====================================
  
  1) Create the directory JBOSS_HOME/modules/org/batoo/main
- 2) Copy the latest version of batoo-jpa.jar into the directory as batoo-jpa-0.1.jar. You can download the latest jar from Maven Repo: http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22batoo-jpa%22
+ 2) The latest snapshot batoo-jar is included in jboss-module. 
+    Since Batoo JPA is incubation, if you expreience any problems, you can replace the jar with the latest snapshot. 
+    You can download the latest jar from Maven Repo: https://oss.sonatype.org/content/repositories/snapshots/org/batoo/jpa/batoo-jpa/
+    The latest snapshot available version as of writing is https://oss.sonatype.org/content/repositories/snapshots/org/batoo/jpa/batoo-jpa/0.1.7-SNAPSHOT/batoo-jpa-0.1.7-20121019.061838-11.jar
+    You need to preserve the name batoo-jpa-01.jar
  3) Copy the contents of etc/jboss-module into the directory. 
 
 

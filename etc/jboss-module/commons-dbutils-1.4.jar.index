@@ -1,0 +1,11 @@
+org/apache/commons/dbutils/wrappers
+
+org/apache/commons/dbutils
+org/apache/commons
+org/apache
+META-INF/maven
+META-INF/maven/commons-dbutils/commons-dbutils
+META-INF/maven/commons-dbutils
+org
+META-INF
+org/apache/commons/dbutils/handlers
