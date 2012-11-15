@@ -24,7 +24,7 @@
 <!-- Represents the Batoo JPA 0.0.x module-->
 <module xmlns="urn:jboss:module:1.1" name="org.batoo">
     <resources>
-        <resource-root path="batoo-jpa-0.1.jar"/>
+        <resource-root path="batoo-jpa-2.0.0.jar"/>
         <resource-root path="commons-dbutils-1.4.jar"/>
         <resource-root path="antlr-runtime-3.4.jar"/>
         <resource-root path="asm-3.3.1.jar"/>
@@ -42,5 +42,7 @@
         <module name="org.apache.commons.pool"/>
         <module name="org.apache.commons.io"/>
         <module name="org.slf4j"/>
+		<module name="org.jboss.as.jpa.spi" />
+		<module name="org.jboss.jandex" />
     </dependencies>
 </module>

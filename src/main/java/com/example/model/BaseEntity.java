@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
+import javax.persistence.TableGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -29,7 +30,8 @@ import javax.persistence.Transient;
 public abstract class BaseEntity {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@TableGenerator(initialValue = 201, name = "batoo_id", table = "batoo_id", pkColumnName = "name", pkColumnValue = "batoo_id", valueColumnName = "next_id")
+	@GeneratedValue(generator = "batoo_id", strategy = GenerationType.TABLE)
 	private Long id;
 
 	@Temporal(TemporalType.TIMESTAMP)

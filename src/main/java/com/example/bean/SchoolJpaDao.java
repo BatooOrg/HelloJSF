@@ -55,8 +55,7 @@ public class SchoolJpaDao implements SchoolDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Course> getCourses() {
-		return entityManager.createQuery("select c from Course c order by c.title")
-				.getResultList();
+		return entityManager.createQuery("select c from Course c order by c.title").getResultList();
 	}
 
 	@Override
@@ -72,8 +71,7 @@ public class SchoolJpaDao implements SchoolDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Teacher> getTeachers() {
-		return entityManager.createQuery("select t from Teacher t order by t.lastName,t.firstName")
-				.getResultList();
+		return entityManager.createQuery("select t from Teacher t order by t.lastName,t.firstName").getResultList();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -134,8 +132,7 @@ public class SchoolJpaDao implements SchoolDao {
 	@Override
 	public List<Student> getStudentsForCourse(Course c) {
 		String ql = "select distinct s from Course c left join c.students s where c.id = :courseId order by s.lastName,s.firstName";
-		return entityManager.createQuery(ql).setParameter("courseId", c.getId())
-				.getResultList();
+		return entityManager.createQuery(ql).setParameter("courseId", c.getId()).getResultList();
 
 	}
 
@@ -143,16 +140,14 @@ public class SchoolJpaDao implements SchoolDao {
 	@Override
 	public List<Course> getCoursesForStudent(Student student) {
 		String ql = "select c from Course c left join c.students s join fetch c.teacher where s.id = :studentId order by c.title";
-		return entityManager.createQuery(ql).setParameter("studentId", student.getId())
-				.getResultList();
+		return entityManager.createQuery(ql).setParameter("studentId", student.getId()).getResultList();
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Course> getCoursesForTeacher(Teacher teacher) {
 		String ql = "select c from Course c where c.teacher.id = :teacherId order by c.teacher.lastName,c.teacher.firstName";
-		return entityManager.createQuery(ql).setParameter("teacherId", teacher.getId())
-				.getResultList();
+		return entityManager.createQuery(ql).setParameter("teacherId", teacher.getId()).getResultList();
 	}
 
 	@Override
@@ -193,11 +188,7 @@ public class SchoolJpaDao implements SchoolDao {
 
 	@Override
 	public List<TeacherCourseCount> getTeachCourseCounts() {
-		List<TeacherCourseCount> results = new ArrayList<TeacherCourseCount>();
-		List<Teacher> teachers = getTeachers();
-		for (Teacher t : teachers) {
-			results.add(new TeacherCourseCount(t.getId(), t.getOrderedName(), t.getCoursesTaught().size()));
-		}
-		return results;
+		return this.entityManager.createQuery("select new com.example.bean.TeacherCourseCount(t.id, t.lastName, t.firstName, count(c)) from Teacher t join t.coursesTaught c group by t.id, t.lastName, t.firstName",
+				TeacherCourseCount.class).getResultList();
 	}
 }

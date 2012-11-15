@@ -5,10 +5,11 @@
 	<persistence-unit name="pu">
 		<provider>org.batoo.jpa.core.BatooPersistenceProvider</provider>
 
-		<jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
-		<shared-cache-mode>NONE</shared-cache-mode>
+		<jta-data-source>java:jboss/datasources/Benchmark</jta-data-source>
+
 		<properties>
-			<property name="org.batoo.jpa.ddl" value="DROP" />
+			<property name="org.batoo.jpa.ddl" value="NONE" />
+			<property name="org.batoo.jdbc.import_sql" value="import.sql"/>
 
 			<!-- jboss7 specific -->
 			<property name="jboss.as.jpa.providerModule" value="org.batoo" />

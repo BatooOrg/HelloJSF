@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -34,6 +36,10 @@ public class Student extends Person {
 	private Float gpa;
 
 	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(joinColumns = 
+		@JoinColumn(name = "Person_id"), 
+		inverseJoinColumns = @JoinColumn(name = "Course_id")
+	)
 	private List<Course> enrolled = new ArrayList<Course>();
 
 	public List<Course> getEnrolled() {
