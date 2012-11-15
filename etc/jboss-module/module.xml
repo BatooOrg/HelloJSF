@@ -21,7 +21,7 @@
 
  -->
 
-<!-- Represents the Batoo JPA 0.0.x module-->
+<!-- Represents the Batoo JPA 2.0.x module-->
 <module xmlns="urn:jboss:module:1.1" name="org.batoo">
     <resources>
         <resource-root path="batoo-jpa-2.0.0.jar"/>
