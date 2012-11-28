@@ -6,12 +6,13 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
 	template="/WEB-INF/templates/template.xhtml">
-	<ui:define name="content">
-		<f:metadata>
-			<f:viewParam name="courseId" value="#{courseHome.id}" />
-			<f:event type="preRenderView" listener="#{courseHome.init(true)}" />
-		</f:metadata>
+	
+	<f:metadata>
+		<f:viewParam name="courseId" value="#{courseHome.id}" />
+		<f:event type="preRenderView" listener="#{courseHome.init(true)}" />
+	</f:metadata>
 
+	<ui:define name="content">
 		<h:form>
 			<fc:panel
 				caption="#{courseHome.course.code} - #{courseHome.course.title}">

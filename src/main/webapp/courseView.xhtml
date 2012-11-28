@@ -5,11 +5,13 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:fc="http://java.sun.com/jsf/composite/fluttercode/component"
 	template="/WEB-INF/templates/template.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="courseId" value="#{courseHome.id}" />
+		<f:event type="preRenderView" listener="#{courseHome.init(false)}" />
+	</f:metadata>
+
 	<ui:define name="content">
-		<f:metadata>
-			<f:viewParam name="courseId" value="#{courseHome.id}" />
-			<f:event type="preRenderView" listener="#{courseHome.init(false)}" />
-		</f:metadata>
 		<h:form>
 			<fc:panel
 				caption="#{courseHome.course.code} - #{courseHome.course.title}">
@@ -23,7 +25,6 @@
 					</h:link>
 				</fc:property>
 
-
 				<fc:auditInfo entity="#{courseHome.course}" captionClass="caption"
 					valueClass="value" />
 
@@ -32,35 +33,28 @@
 				<h:button outcome="courseEdit" value="Edit Course">
 					<f:param name="courseId" value="#{courseHome.course.id}" />
 				</h:button>
-
-
 			</fc:panel>
 
 			<fc:panel caption="Students Enrolled">
-
 				<h:dataTable styleClass="dataTable" value="#{courseHome.students}"
 					var="v_student">
 					<h:column>
 							(<h:link outcome="personView" value="details">
 							<f:param name="personId" value="#{v_student.id}" />
 						</h:link>)
-				</h:column>
-
+					</h:column>
 					<h:column>
 						<f:facet name="header">First Name</f:facet>
 						<h:outputText value="#{v_student.firstName}" />
 					</h:column>
-
 					<h:column>
 						<f:facet name="header">Last Name</f:facet>
 						<h:outputText value="#{v_student.lastName}" />
 					</h:column>
-
 					<h:column>
 						<f:facet name="header">GPA</f:facet>
 						<h:outputText value="#{v_student.gpa}" />
 					</h:column>
-
 				</h:dataTable>
 			</fc:panel>
 		</h:form>

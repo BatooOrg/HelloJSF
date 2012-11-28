@@ -6,15 +6,14 @@
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
 	xmlns:fc="http://java.sun.com/jsf/composite/fluttercode/component"
 	template="/WEB-INF/templates/template.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="personId" value="#{personHome.id}" />
+		<f:event type="preRenderView" listener="#{personHome.init(false)}" />
+	</f:metadata>
+
 	<ui:define name="content">
-		<f:metadata>
-			<f:viewParam name="personId" value="#{personHome.id}" />
-			<f:event type="preRenderView" listener="#{personHome.init(false)}" />
-		</f:metadata>
-
 		<h:form>
-
-
 			<fc:panel
 				caption="#{personHome.isTeacher ? 'Teacher : ' : 'Student : '} #{personHome.person.name}">
 				<fc:property caption="Id">#{personHome.person.id}</fc:property>
@@ -30,7 +29,8 @@
 				</h:button>
 
 			</fc:panel>
-			<fc:panel caption="#{personHome.isTeacher ? 'Courses Taught' : 'Courses Enrolled'}">
+			<fc:panel
+				caption="#{personHome.isTeacher ? 'Courses Taught' : 'Courses Enrolled'}">
 
 
 				<h:dataTable styleClass="dataTable" value="#{personHome.courses}"

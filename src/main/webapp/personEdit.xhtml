@@ -6,12 +6,14 @@
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
 	xmlns:fc="http://java.sun.com/jsf/composite/fluttercode/component"
 	template="/WEB-INF/templates/template.xhtml">
-	<ui:define name="content">
+
 		<f:metadata>
 			<f:viewParam name="personId" value="#{personHome.id}" />
 			<f:viewParam name="type" value="#{personHome.newType}" />
 			<f:event type="preRenderView" listener="#{personHome.init(true)}" />
 		</f:metadata>
+
+	<ui:define name="content">
 		<h:form id="personEdit">
 			<fc:panel>
 

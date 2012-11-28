@@ -37,6 +37,7 @@
 			<ui:fragment rendered="#{empty studentSearch.results}">
 				<h2>No Results Found</h2>
 			</ui:fragment>
+
 			<ui:fragment rendered="#{!empty studentSearch.results}">
 				<h:dataTable value="#{studentSearch.results}" var="v_student"
 					id="results" styleClass="dataTable" rowClasses="even,odd">
@@ -78,11 +79,8 @@
 						style="margin-right : 12px">
 						<f:param name="type" value="teacher" />
 					</h:link>
-
 				</h:panelGroup>
 			</ui:fragment>
-
 		</h:form>
-
 	</ui:define>
 </ui:composition>
